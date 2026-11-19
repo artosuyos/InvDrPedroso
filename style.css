@@ -1,0 +1,644 @@
+/* Style configurations for premium luxury cinematic letter */
+
+/* Core variables */
+:root {
+  --velvet-black: #080002;
+  --velvet-absolute: #020001;
+  --burgundy-prestige: #3d0510;
+  --burgundy-warm: #5c0b1a;
+  --burgundy-deep: #120003;
+  --gold-accent: #d4af37;
+  --gold-soft: #e5c060;
+  --ivory-light: #fcfaf6;
+  --ivory-soft: #f5f2eb;
+  --ivory-text: #e8e2d5;
+}
+
+/* Custom background spotlights */
+.burgundy-radial-glow {
+  background: radial-gradient(circle, rgba(92, 11, 26, 0.25) 0%, rgba(2, 0, 1, 0) 70%);
+}
+
+.bg-radial-gradient-hero {
+  background: radial-gradient(circle at center, rgba(61, 5, 16, 0.25) 0%, var(--velvet-absolute) 100%);
+}
+
+/* Premium glassmorphic cards */
+.glass-panel {
+  background: rgba(18, 0, 3, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 
+              inset 0 0 20px rgba(212, 175, 55, 0.02);
+}
+
+.glass-panel-light {
+  background: rgba(252, 250, 246, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.05);
+}
+
+/* Luxury text shadows and gradients */
+.glow-text-gold {
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.5), 
+               0 0 24px rgba(212, 175, 55, 0.3),
+               0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+@keyframes cinematicGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.75),
+                 0 0 40px rgba(212, 175, 55, 0.55),
+                 0 0 65px rgba(212, 175, 55, 0.35),
+                 0 0 95px rgba(212, 175, 55, 0.15),
+                 0 0 130px rgba(255, 255, 255, 0.2);
+    transform: scale(1.0);
+  }
+  50% {
+    text-shadow: 0 0 35px rgba(212, 175, 55, 0.95),
+                 0 0 60px rgba(212, 175, 55, 0.85),
+                 0 0 90px rgba(212, 175, 55, 0.65),
+                 0 0 120px rgba(212, 175, 55, 0.45),
+                 0 0 160px rgba(255, 255, 255, 0.4);
+    transform: scale(1.03);
+  }
+}
+
+.glow-title-dr-pedroso {
+  display: inline-block;
+  animation: cinematicGlow 6s ease-in-out infinite;
+}
+
+.glow-text-burgundy {
+  text-shadow: 0 0 15px rgba(128, 15, 47, 0.6), 
+               0 0 30px rgba(128, 15, 47, 0.3);
+}
+
+/* Breathe effect for the center spotlight gold ring */
+@keyframes ring-glow {
+  0%, 100% {
+    box-shadow: 0 0 50px rgba(61, 5, 16, 0.15), inset 0 0 50px rgba(212, 175, 55, 0.02);
+    border-color: rgba(212, 175, 55, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 100px rgba(92, 11, 26, 0.35), inset 0 0 80px rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.18);
+  }
+}
+
+.animate-ring-glow {
+  animation: ring-glow 7s ease-in-out infinite;
+}
+
+/* Pure editorial luxury font rendering */
+h1, h2, h3, p, span, button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--velvet-absolute);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--burgundy-prestige);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-accent);
+}
+
+/* Shimmer gold shine for buttons */
+@keyframes gold-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-12deg);
+  animation: gold-shine 3.5s infinite linear;
+}
+
+/* Smooth active state transitions */
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 14px;
+  height: 1.5px;
+  background-color: var(--gold-accent);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+nav a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ==========================================
+   REAL 3D MELTED HOT WAX SEAL COMPONENT
+   ========================================== */
+
+.hot-wax-seal {
+  background: radial-gradient(circle at 30% 30%, #a6122d 0%, #6e081a 60%, #40030d 100%) !important;
+  border-radius: 54% 46% 52% 48% / 48% 54% 46% 52% !important; /* Authentic irregular organic melted blob */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.75),
+    inset 0 4px 6px rgba(255, 255, 255, 0.35), /* Rim top highlight */
+    inset 0 -6px 10px rgba(0, 0, 0, 0.6), /* Rim bottom shadow */
+    inset 0 0 15px rgba(64, 3, 13, 0.8) !important;
+  border: 1px solid #7d0a1d !important;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.hot-wax-seal:hover {
+  background: radial-gradient(circle at 30% 30%, #be1b3b 0%, #820b22 60%, #4d0411 100%) !important;
+  transform: scale(1.05) rotate(-3deg) !important;
+  box-shadow: 
+    0 14px 30px rgba(0, 0, 0, 0.85),
+    inset 0 4px 8px rgba(255, 255, 255, 0.45),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.65),
+    inset 0 0 20px rgba(64, 3, 13, 0.9) !important;
+}
+
+.hot-wax-seal:active {
+  transform: scale(0.96) !important;
+}
+
+/* Debossed central pressed wax */
+.wax-inner-press {
+  border-radius: 51% 49% 49% 51% / 50% 50% 50% 50% !important;
+  background: radial-gradient(circle at 50% 50%, #540614 0%, #6e081a 100%) !important;
+  box-shadow: 
+    inset 0 5px 8px rgba(0, 0, 0, 0.8), /* Deep inner debossed shadow */
+    inset 0 -2px 4px rgba(255, 255, 255, 0.25), /* Soft bottom rim light inside press */
+    0 2px 2px rgba(255, 255, 255, 0.15) !important; /* Highlight on the outer rim cliff */
+  border: 1px solid rgba(84, 6, 20, 0.5) !important;
+}
+
+/* 3D Embossed Metallic Gold Monogram style */
+.wax-monogram-3d {
+  opacity: 0.85;
+  transition: all 0.4s ease;
+  /* Embossing filter: highlight on top-left, shadow on bottom-right, blend into the wax with slight red tint */
+  filter: 
+    drop-shadow(-0.8px -0.8px 0.5px rgba(255, 255, 255, 0.5)) /* Highlight */
+    drop-shadow(1.5px 1.5px 1.2px rgba(0, 0, 0, 0.85)) /* Deep shadow */
+    brightness(0.9) 
+    contrast(1.2)
+    sepia(0.2) 
+    hue-rotate(-15deg);
+}
+
+.hot-wax-seal:hover .wax-monogram-3d {
+  opacity: 1;
+  filter: 
+    drop-shadow(-1px -1px 0.8px rgba(255, 255, 255, 0.6))
+    drop-shadow(2px 2px 1.5px rgba(0, 0, 0, 0.95))
+    brightness(1) 
+    contrast(1.25)
+    sepia(0.15)
+    hue-rotate(-15deg)
+    scale(1.04);
+}
+
+.static-wax-seal {
+  background: radial-gradient(circle at 30% 30%, #910e25 0%, #5d0615 60%, #330209 100%) !important;
+  border-radius: 54% 46% 52% 48% / 48% 54% 46% 52% !important;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.25),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 0 12px rgba(64, 3, 13, 0.8) !important;
+  border: 1px solid #660817 !important;
+  pointer-events: none !important;
+}
+
+/* ==========================================
+   THE BIG DAY — REFERENCE-MATCHING CARDS
+   ========================================== */
+
+.big-day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 14px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: linear-gradient(160deg, #1c0408 0%, #0c0002 100%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), inset 0 0 24px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+  cursor: default;
+  user-select: none;
+  min-height: 160px;
+}
+
+.big-day-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.42);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85),
+              0 0 20px rgba(212, 175, 55, 0.06),
+              inset 0 0 24px rgba(0, 0, 0, 0.5);
+}
+
+.big-day-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--gold-accent);
+  margin: 0 auto 14px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.35));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.big-day-card:hover .big-day-icon {
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+  transform: scale(1.07);
+}
+
+.big-day-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(229, 192, 96, 0.5);
+  margin-bottom: 7px;
+  line-height: 1.2;
+}
+
+.big-day-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold-accent);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.big-day-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  color: rgba(232, 226, 213, 0.38);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+@keyframes moving-glass-brown {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.moving-glass-brown-bg {
+  background: linear-gradient(115deg, rgba(110, 71, 59, 0.25) 0%, rgba(212, 175, 55, 0.45) 50%, rgba(110, 71, 59, 0.25) 100%) !important;
+  background-size: 200% 200% !important;
+  animation: moving-glass-brown 8s infinite linear !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+@keyframes wedding-dance {
+  0%, 100% {
+    transform: rotate(-1.5deg) translateY(2px);
+  }
+  50% {
+    transform: rotate(1.5deg) translateY(-4px);
+  }
+}
+
+.animate-wedding-dance {
+  animation: wedding-dance 6s infinite ease-in-out !important;
+  transform-origin: bottom center !important;
+}
+
+/* --- PREMIUM CARD ICON MICRO-ANIMATIONS --- */
+@keyframes calendar-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(2deg); }
+}
+.icon-calendar {
+  animation: calendar-float 4s ease-in-out infinite;
+}
+
+@keyframes ring-left-move {
+  0%    { transform: translateX(-7px); }
+  45%   { transform: translateX(3px); }
+  55%   { transform: translateX(3px); }
+  100%  { transform: translateX(-7px); }
+}
+@keyframes ring-right-move {
+  0%    { transform: translateX(7px); }
+  45%   { transform: translateX(-3px); }
+  55%   { transform: translateX(-3px); }
+  100%  { transform: translateX(7px); }
+}
+@keyframes diamond-sparkle {
+  0%, 100% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 0px rgba(229,192,96,0));
+  }
+  45%, 55% {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px rgba(229,192,96,0.95));
+  }
+}
+.ring-left-group {
+  animation: ring-left-move 4.5s ease-in-out infinite;
+}
+.ring-right-group {
+  animation: ring-right-move 4.5s ease-in-out infinite;
+}
+.ring-diamond {
+  animation: diamond-sparkle 4.5s ease-in-out infinite;
+}
+
+@keyframes glass-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+}
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0) scale(0.9); opacity: 0.4; }
+  50% { transform: translateY(-3px) scale(1.1); opacity: 0.9; }
+}
+.icon-glass {
+  animation: glass-tilt 6s ease-in-out infinite;
+}
+.glass-bubble-1 {
+  animation: bubble-float 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+.glass-bubble-2 {
+  animation: bubble-float 3.5s ease-in-out infinite 1s;
+  transform-origin: center;
+}
+
+@keyframes dress-sway {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(-2deg) skewX(1deg); }
+}
+.icon-dress {
+  animation: dress-sway 4.5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes rotate-minute {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes rotate-hour {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.clock-hand-minute {
+  animation: rotate-minute 12s linear infinite;
+  transform-origin: 12px 12px;
+}
+.clock-hand-hour {
+  animation: rotate-hour 144s linear infinite;
+  transform-origin: 12px 12px;
+}
+
+/* --- CALENDAR DOTS MORPH TO 22 ANIMATION ---
+   Grid: 4 cols x 4 rows
+   d1 (7.5,13)  d2 (10.5,13)  d3 (13.5,13)  d4 (16.5,13)
+   d5 (7.5,15.5) d6 (10.5,15.5) d7 (13.5,15.5) d8 (16.5,15.5)
+   d9 (7.5,18)  d10(10.5,18)  d11(13.5,18)  d12(16.5,18)
+   d13(7.5,20.5) d14(10.5,20.5) d15(13.5,20.5) d16(16.5,20.5)
+
+   Left "2"  = d1,d2 (top), d6 (upper-right), d9,d10 (mid), d13,d14 (bot)
+   Right "2" = d3,d4 (top), d8 (upper-right), d11,d12 (mid), d15,d16 (bot)
+   Gaps      = d5 (upper-left of L2), d7 (upper-left of R2) → opacity 0
+--- */
+
+/* LEFT "2" — top bar: stays */
+@keyframes morph-dot-1 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* LEFT "2" — top bar: stays */
+@keyframes morph-dot-2 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — top bar: stays */
+@keyframes morph-dot-3 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — top bar: stays */
+@keyframes morph-dot-4 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* LEFT "2" — upper-left GAP: fade out */
+@keyframes morph-dot-5 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:currentColor; opacity:0; } }
+/* LEFT "2" — upper-right stays */
+@keyframes morph-dot-6 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — upper-left GAP: fade out */
+@keyframes morph-dot-7 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:currentColor; opacity:0; } }
+/* RIGHT "2" — upper-right stays */
+@keyframes morph-dot-8 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* LEFT "2" — middle-left stays */
+@keyframes morph-dot-9 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* LEFT "2" — middle-right stays */
+@keyframes morph-dot-10 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — middle-left stays */
+@keyframes morph-dot-11 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — middle-right stays */
+@keyframes morph-dot-12 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* LEFT "2" — bottom-left stays */
+@keyframes morph-dot-13 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* LEFT "2" — bottom-right stays */
+@keyframes morph-dot-14 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — bottom-left stays */
+@keyframes morph-dot-15 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+/* RIGHT "2" — bottom-right stays */
+@keyframes morph-dot-16 { 0%,35%,65%,100% { transform:translate(0,0); opacity:0.45; } 45%,55% { transform:translate(0,0); fill:#e5c060; opacity:1; } }
+
+.cal-d-1  { animation: morph-dot-1  7s ease-in-out infinite; }
+.cal-d-2  { animation: morph-dot-2  7s ease-in-out infinite 0.1s; }
+.cal-d-3  { animation: morph-dot-3  7s ease-in-out infinite 0.05s; }
+.cal-d-4  { animation: morph-dot-4  7s ease-in-out infinite 0.15s; }
+.cal-d-5  { animation: morph-dot-5  7s ease-in-out infinite 0.2s; }
+.cal-d-6  { animation: morph-dot-6  7s ease-in-out infinite 0.25s; }
+.cal-d-7  { animation: morph-dot-7  7s ease-in-out infinite 0.2s; }
+.cal-d-8  { animation: morph-dot-8  7s ease-in-out infinite 0.3s; }
+.cal-d-9  { animation: morph-dot-9  7s ease-in-out infinite 0.35s; }
+.cal-d-10 { animation: morph-dot-10 7s ease-in-out infinite 0.4s; }
+.cal-d-11 { animation: morph-dot-11 7s ease-in-out infinite 0.35s; }
+.cal-d-12 { animation: morph-dot-12 7s ease-in-out infinite 0.45s; }
+.cal-d-13 { animation: morph-dot-13 7s ease-in-out infinite 0.5s; }
+.cal-d-14 { animation: morph-dot-14 7s ease-in-out infinite 0.55s; }
+.cal-d-15 { animation: morph-dot-15 7s ease-in-out infinite 0.5s; }
+.cal-d-16 { animation: morph-dot-16 7s ease-in-out infinite 0.6s; }
+
+/* ==========================================
+   CINEMATIC ENVELOPE REVEAL TRANSITION
+   ========================================== */
+
+#envelope-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9990;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(30, 4, 10, 0.95) 0%, #030001 100%);
+  overflow: hidden;
+  perspective: 1200px;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#envelope-container.active {
+  display: flex;
+  opacity: 1;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 900px; /* Occupies almost the entire screen width on desktop */
+  transform: translateY(100px) scale(0.9);
+  opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease, filter 1.2s ease;
+  z-index: 10;
+}
+
+.envelope-wrapper.visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.intro-gif {
+  width: 100%;
+  height: auto;
+  mix-blend-mode: screen; /* Blends out the solid black background of the GIF */
+  border: none;
+  display: block;
+}
+
+.gif-overlay-text {
+  position: absolute;
+  top: 37%; /* Moved higher to sit centered inside the white card, clear of the wax seal */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gif-overlay-text.visible {
+  opacity: 1;
+}
+
+.overlay-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px; /* Made smaller to fit perfectly inside the white paper */
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3d0510 !important; /* Premium dark burgundy - perfect for white background */
+  margin-bottom: 4px;
+  text-shadow: none; /* Removed dark shadows for clean print-style typography */
+}
+
+.overlay-to {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px; /* Made smaller to fit perfectly inside the white paper */
+  font-style: italic;
+  color: rgba(61, 5, 16, 0.75) !important; /* Elegant dark burgundy with opacity */
+  margin-bottom: 4px;
+  text-shadow: none;
+}
+
+.overlay-guest {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 78px; /* Remains large and emphasized */
+  color: #3d0510 !important; /* Premium dark burgundy for contrast */
+  font-weight: normal;
+  line-height: 1.1;
+  text-shadow: none;
+}
+
+/* Zoom state for reveal (Option A) */
+.envelope-wrapper.zoom-in {
+  transform: scale(2.8);
+  opacity: 0;
+  filter: blur(15px);
+  transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.9s ease, filter 0.9s ease;
+}
+
+/* Magical Particles Container */
+#envelope-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9995;
+}
+
+/* ==========================================
+   OUR MEMORIES SECTION
+   ========================================== */
+.memory-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: linear-gradient(160deg, #1c0408 0%, #0c0002 100%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), inset 0 0 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  min-height: 220px;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.42);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85),
+              0 0 20px rgba(212, 175, 55, 0.06),
+              inset 0 0 24px rgba(0, 0, 0, 0.5);
+}

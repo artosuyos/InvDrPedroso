@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>A Special Invitation for Dr. John Erwin  Pedroso | Marvie & Art</title>
+    <meta name="description" content="A private, premium cinematic digital invitation letter experience crafted exclusively for Dr. Pedroso. A heartfelt journey of friendship, love, and a very special ask." />
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              burgundy: {
+                deep: '#0f0103',
+                prestige: '#3d0510',
+                warm: '#5c0b1a',
+                vibrant: '#800f2f',
+              },
+              gold: {
+                light: '#f9f6e5',
+                soft: '#e5c060',
+                accent: '#d4af37',
+                dark: '#aa7c11',
+              },
+              velvet: {
+                black: '#080002',
+                absolute: '#020001',
+              },
+              ivory: {
+                light: '#fcfaf6',
+                soft: '#f5f2eb',
+                text: '#e8e2d5',
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'Cinzel', 'Georgia', 'serif'],
+              sans: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+              cursive: ['"Pinyon Script"', '"Great Vibes"', 'cursive'],
+              handwriting: ['"Alex Brush"', 'cursive']
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-velvet-absolute text-ivory-light antialiased overflow-x-hidden font-sans select-none relative">
+    <audio id="bg-music-element" src="assets/palagi.mp3" autoplay loop muted style="display:none;"></audio>
+    
+    <!-- Canvas background for Bokeh and Confetti -->
+    <canvas id="ambient-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[5] bg-transparent"></canvas>
+    <canvas id="overlay-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[9999] bg-transparent"></canvas>
+
+    <!-- 1. FULLSCREEN LOADER SCREEN -->
+    <div id="loader-screen" class="fixed inset-0 w-full h-full bg-[#030001] z-[9999] flex flex-col items-center justify-center overflow-hidden select-none" style="background: radial-gradient(circle at center, rgba(61, 5, 16, 0.35) 0%, #030001 100%)">
+      <div class="absolute w-[350px] h-[350px] bg-burgundy-prestige/20 blur-[120px] rounded-full pointer-events-none animate-pulse"></div>
+      
+      <!-- Monogram spinner wrapper -->
+      <div class="relative flex items-center justify-center w-32 h-32 mb-10 transition-all duration-1000 ease-out">
+        <div class="absolute inset-0 rounded-full border border-gold-accent/15 border-t-gold-accent animate-[spin_3s_linear_infinite]"></div>
+        <div class="absolute inset-[3px] rounded-full border border-gold-accent/5 border-b-gold-accent animate-[spin_6s_linear_infinite_reverse]"></div>
+        <img id="loader-crest" src="assets/MAmonogram.webp" alt="Crest Monogram Seal" class="w-24 h-24 object-contain shadow-[0_10px_35px_rgba(0,0,0,0.6)]" />
+      </div>
+
+      <div class="text-center px-6 max-w-md mx-auto">
+        <p class="font-serif text-lg md:text-xl text-ivory-light font-light italic tracking-wide mb-2.5">"I have found the one whom my soul loves"</p>
+        <p class="font-serif text-[10px] md:text-xs tracking-[0.25em] text-gold-accent uppercase font-medium">Solomon 3:4</p>
+      </div>
+    </div>
+
+    <!-- CINEMATIC ENVELOPE CONTAINER -->
+    <div id="envelope-container">
+      <!-- Background Ambient Golden Particles Canvas -->
+      <canvas id="envelope-ambient-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-[2]"></canvas>
+
+      <div id="envelope-particles"></div>
+      <div id="envelope-wrapper" class="envelope-wrapper flex items-center justify-center relative cursor-pointer">
+        <img id="intro-gif-element" src="assets/EnvelopeGIF1.webp" alt="Invitation Intro" class="intro-gif" />
+      </div>
+      
+      <!-- Interactive Click Prompt Centered at Bottom -->
+      <p id="envelope-click-prompt" class="absolute bottom-12 left-1/2 text-xs tracking-[0.2em] uppercase font-bold text-white bg-velvet-black/90 border border-gold-accent/30 rounded-full px-6 py-2.5 select-none shadow-[0_4px_20px_rgba(0,0,0,0.7)] animate-pulse cursor-pointer transition-all duration-[600ms] z-10" style="opacity: 0; transform: translate(-50%, 20px);">Tap the Envelope</p>
+    </div>
+
+    <!-- MAIN SCROLLABLE WRAPPER -->
+    <div id="main-content" class="relative w-full opacity-0 transition-opacity duration-1000">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <nav class="fixed top-0 left-0 w-full z-[100] bg-velvet-absolute/70 backdrop-blur-md border-b border-gold-accent/5 px-6 py-4 flex items-center justify-between">
+        
+        <!-- Left: Logo & Text -->
+        <a href="#hero-section" class="flex items-center gap-3.5 group focus:outline-none">
+          <img src="assets/monogram.webp" alt="Marvie & Art Monogram Crest" class="w-10 h-10 rounded-full border border-gold-accent/20 shadow-[0_0_8px_rgba(212,175,55,0.1)] group-hover:border-gold-accent/50 transition-colors" />
+          <span class="font-serif text-xs md:text-sm tracking-[0.25em] text-gold-accent font-semibold group-hover:text-gold-light transition-colors uppercase">
+            MARVIE & ART
+          </span>
+        </a>
+
+        <!-- Center: Navigation Links -->
+        <div class="hidden md:flex items-center gap-8 text-[11px] tracking-[0.25em] font-medium uppercase text-ivory-text/60">
+          <a href="#hero-section" class="hover:text-gold-accent transition-colors">Home</a>
+          <a href="#message-section" class="hover:text-gold-accent transition-colors">Message</a>
+          <a href="#wedding-section" class="hover:text-gold-accent transition-colors">Wedding Details</a>
+        </div>
+
+
+      </nav>
+
+      <!-- 2. CINEMATIC HERO SECTION EXACTLY LIKE THE REFERENCE IMAGE -->
+      <section id="hero-section" class="relative w-full h-screen min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden select-none">
+        
+        <!-- High-resolution Background Envelope image exactly like the reference -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none select-none z-[1]" style="background-image: url('assets/hero_bg.webp'); filter: brightness(0.42);"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-velvet-absolute via-transparent to-velvet-absolute/50 pointer-events-none z-[2]"></div>
+
+        <div class="relative z-[10] flex flex-col items-center justify-center max-w-4xl pt-12" id="hero-content">
+          <span class="font-serif text-[11px] md:text-xs tracking-[0.35em] text-gold-soft font-semibold uppercase mb-3 opacity-80">
+            A SPECIAL INVITATION FOR
+          </span>
+          
+          <h1 class="font-cursive text-6xl sm:text-8xl md:text-[9.5rem] text-gold-accent font-light tracking-wide mb-6 capitalize leading-none glow-title-dr-pedroso select-none">
+            Dr. Pedroso
+          </h1>
+          
+          <!-- Separator heart icon -->
+          <div class="flex items-center gap-3 my-4 opacity-80">
+            <div class="w-12 h-[1px] bg-gold-accent/30"></div>
+            <i data-lucide="heart" class="w-3.5 h-3.5 fill-gold-accent text-gold-accent"></i>
+            <div class="w-12 h-[1px] bg-gold-accent/30"></div>
+          </div>
+
+          <p class="font-serif text-sm sm:text-base md:text-lg italic text-gold-light/85 max-w-4xl mx-auto tracking-wide mb-6">
+            “For the wonderful people we are grateful to have beside us as we begin this new chapter of our lives.”
+          </p>
+        </div>
+
+        <!-- Scroll prompt indicator -->
+        <div id="scroll-prompt" class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: window.innerHeight - 80, behavior: 'smooth'});">
+          <div class="w-8 h-8 rounded-full border border-gold-accent/20 flex items-center justify-center bg-velvet-black/40 backdrop-blur-sm animate-[bounce_2.5s_infinite]">
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gold-accent"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. MESSAGE SECTION EXACTLY LIKE THE REFERENCE IMAGE -->
+      <section id="message-section" class="relative min-h-screen py-24 px-4 sm:px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden z-10 select-none bg-transparent">
+        <div class="absolute inset-0 bg-transparent pointer-events-none select-none z-[1] burgundy-radial-glow opacity-60"></div>
+
+        <div class="relative w-full max-w-5xl mx-auto z-10">
+          
+          <!-- Stately Velvet rectangular panel with thin gold borders -->
+          <div class="w-full glass-panel rounded-3xl p-6 sm:p-10 md:p-14 border border-gold-accent/15 shadow-[0_25px_65px_rgba(0,0,0,0.9)] relative" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.8) 0%, rgba(10, 0, 3, 0.95) 100%);">
+            
+            <!-- Thin internal gold border frame and filigree corners -->
+            <div class="absolute inset-4 border border-gold-accent/10 rounded-2xl pointer-events-none z-[2]"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+              
+              <!-- Left: The Printed Letter (7 cols) -->
+              <div class="lg:col-span-7 px-4 select-none">
+                
+                  <h3 class="font-cursive text-4xl sm:text-5xl text-gold-accent font-light tracking-wide mb-6 block text-left">
+                    Dear Dr. John Erwin Pedroso,
+                  </h3>
+
+                  <div class="space-y-5 font-serif text-sm sm:text-base leading-relaxed text-ivory-soft/90 text-justify tracking-wide select-none">
+                    <p>
+                      Throughout our lives, we have been blessed with people whose presence brings wisdom, encouragement, and genuine care. Your kindness, guidance, and the way you have touched our lives through the years have earned our <span class="text-gold-accent font-semibold glow-text-gold">deepest respect and gratitude</span>. We have shared meaningful moments, celebrated important milestones, and witnessed the value of your support and friendship in so many ways.
+                    </p>
+                    <p>
+                      As we prepare to begin our <span class="text-gold-accent font-semibold glow-text-gold">journey as husband and wife</span>, it would be a great honor to have you as one of our <span class="text-gold-accent font-semibold glow-text-gold underline decoration-gold-accent/30 decoration-2 underline-offset-4">Ninong</span>. Your presence and blessing on our wedding day would mean so much to us, and we would be truly grateful to have you stand with us as we start this new chapter of our lives together.
+                    </p>
+                    <p>
+                      We sincerely hope that you will say <span id="yes-glow-btn" class="text-gold-accent font-semibold glow-text-gold cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 inline-block">yes</span> and accept this heartfelt invitation, as having you with us on this special day would make our celebration even more meaningful and complete.
+                    </p>
+                  </div>
+
+                  <div class="text-left pt-6 select-none">
+                    <span class="font-serif text-xs md:text-sm tracking-wide text-ivory-text/60 block mb-2">
+                      With love and gratitude,
+                    </span>
+                    <span class="font-cursive text-4xl md:text-5xl text-gold-accent block select-none leading-none">
+                      Art & Marvie
+                    </span>
+                  </div>
+              </div>
+
+              <!-- Right: 3D Skewed Flower Card (5 cols) displaying Crimson Roses Image -->
+              <div class="lg:col-span-5 flex justify-center items-center px-4 relative">
+                <div class="relative w-full max-w-[340px] transform rotate-[3deg] hover:rotate-0 transition-transform duration-700 ease-out select-none shadow-[0_15px_40px_rgba(0,0,0,0.8)] rounded-2xl overflow-hidden border border-gold-accent/20 group">
+                  <img src="assets/roses_bg.webp" alt="Crimson Peonies & Roses" class="w-full h-auto object-cover rounded-2xl group-hover:scale-105 transition-transform duration-[2000ms]" />
+                  <!-- Subtle gold inner shadow overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+                  <!-- Elegant decorative gold frame inside photo card -->
+                  <div class="absolute inset-2 border border-gold-accent/20 rounded-xl pointer-events-none"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 3D INTERACTIVE WAX SEAL BUTTON sitting skewed on bottom-right of the velvet card -->
+            <div id="seal-trigger-wrapper" class="absolute bottom-[-50px] right-[-25px] sm:right-[-35px] z-[20] transition-all duration-300">
+              <button id="wax-seal-btn" class="w-[125px] h-[125px] sm:w-[145px] sm:h-[145px] hot-wax-seal flex items-center justify-center cursor-pointer group select-none focus:outline-none" aria-label="Seal letter and accept">
+                
+                <div class="absolute inset-0 bg-[#e5c060]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+                
+                <div class="w-[100px] h-[100px] sm:w-[118px] sm:h-[118px] wax-inner-press flex items-center justify-center relative">
+                  <div class="w-[82px] h-[82px] sm:w-[100px] sm:h-[100px] flex items-center justify-center bg-transparent overflow-visible">
+                    <img src="assets/MAmonogram.webp" alt="Seal crest" class="w-18 h-18 sm:w-22 sm:h-22 object-contain wax-monogram-3d p-0.5" />
+                  </div>
+                </div>
+                
+                <span class="absolute inset-0 rounded-full border-2 border-[#750e20]/0 group-hover:border-[#750e20]/20 group-hover:scale-110 transition-all duration-1000 pointer-events-none"></span>
+                <span class="absolute inset-0 rounded-full border-2 border-gold-accent/0 group-hover:border-gold-accent/10 group-hover:scale-120 transition-all duration-1000 delay-150 pointer-events-none"></span>
+              </button>
+              <div id="seal-tap-prompt" class="absolute top-[105%] left-1/2 -translate-x-1/2 bg-velvet-black/90 border border-gold-accent/30 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-widest text-white uppercase whitespace-nowrap shadow-[0_4px_16px_rgba(0,0,0,0.7)] pointer-events-none group-hover:scale-105 transition-all animate-pulse">
+                Tap to Seal
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- 6. THE BIG DAY SECTION -->
+      <section id="wedding-section" class="relative pt-24 pb-20 px-6 md:px-12 flex flex-col justify-center overflow-hidden z-10 select-none bg-transparent">
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 50%, rgba(61,5,16,0.18) 0%, transparent 72%);"></div>
+        <div class="relative max-w-5xl mx-auto w-full z-[10]">
+          
+          <!-- Section Heading -->
+          <div class="text-center mb-14 select-none">
+            <h2 class="font-serif text-xl md:text-2xl tracking-[0.45em] text-gold-soft uppercase mb-4" style="letter-spacing: 0.45em; font-weight:500;">
+              The Big Day
+            </h2>
+            <div class="flex items-center justify-center gap-3 max-w-[180px] mx-auto">
+              <div class="flex-1 h-[0.5px]" style="background: linear-gradient(to right, transparent, rgba(212,175,55,0.45));"></div>
+              <span class="text-gold-accent" style="font-size:9px; line-height:1;">♥</span>
+              <div class="flex-1 h-[0.5px]" style="background: linear-gradient(to left, transparent, rgba(212,175,55,0.45));"></div>
+            </div>
+            <p class="font-sans text-[13px] sm:text-[14px] text-white tracking-[0.05em] mt-3">
+              Click the cards below for more details.
+            </p>
+          </div>
+
+          <!-- 6-card row -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+            
+            <!-- 1. Date Card -->
+            <div id="date-card" class="big-day-card group cursor-pointer">
+              <!-- Calendar icon -->
+              <svg class="big-day-icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2.5"></rect>
+                <line x1="16" y1="1.5" x2="16" y2="6.5"></line>
+                <line x1="8" y1="1.5" x2="8" y2="6.5"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <!-- Row 1 -->
+                <circle cx="7.5" cy="13" r="0.75" fill="currentColor" class="cal-d-1"></circle>
+                <circle cx="10.5" cy="13" r="0.75" fill="currentColor" class="cal-d-2"></circle>
+                <circle cx="13.5" cy="13" r="0.75" fill="currentColor" class="cal-d-3"></circle>
+                <circle cx="16.5" cy="13" r="0.75" fill="currentColor" class="cal-d-4"></circle>
+                <!-- Row 2 -->
+                <circle cx="7.5" cy="15.5" r="0.75" fill="currentColor" class="cal-d-5"></circle>
+                <circle cx="10.5" cy="15.5" r="0.75" fill="currentColor" class="cal-d-6"></circle>
+                <circle cx="13.5" cy="15.5" r="0.75" fill="currentColor" class="cal-d-7"></circle>
+                <circle cx="16.5" cy="15.5" r="0.75" fill="currentColor" class="cal-d-8"></circle>
+                <!-- Row 3 -->
+                <circle cx="7.5" cy="18" r="0.75" fill="currentColor" class="cal-d-9"></circle>
+                <circle cx="10.5" cy="18" r="0.75" fill="currentColor" class="cal-d-10"></circle>
+                <circle cx="13.5" cy="18" r="0.75" fill="currentColor" class="cal-d-11"></circle>
+                <circle cx="16.5" cy="18" r="0.75" fill="currentColor" class="cal-d-12"></circle>
+                <!-- Row 4 -->
+                <circle cx="7.5" cy="20.5" r="0.75" fill="currentColor" class="cal-d-13"></circle>
+                <circle cx="10.5" cy="20.5" r="0.75" fill="currentColor" class="cal-d-14"></circle>
+                <circle cx="13.5" cy="20.5" r="0.75" fill="currentColor" class="cal-d-15"></circle>
+                <circle cx="16.5" cy="20.5" r="0.75" fill="currentColor" class="cal-d-16"></circle>
+              </svg>
+              <p class="big-day-label">Wedding Date</p>
+              <p class="big-day-value">May 22, 2027</p>
+              <p class="big-day-sub">Saturday</p>
+            </div>
+
+            <!-- 2. Ceremony Venue Card -->
+            <div id="ceremony-card" class="big-day-card group cursor-pointer">
+              <!-- Wedding rings icon -->
+              <svg class="big-day-icon icon-rings" viewBox="0 0 44 30" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Left Ring -->
+                <g class="ring-left-group">
+                  <circle cx="14" cy="18" r="11" class="ring-left-circle" />
+                </g>
+                <!-- Right Ring with Diamond -->
+                <g class="ring-right-group">
+                  <circle cx="30" cy="18" r="11" class="ring-right-circle" />
+                  <!-- Diamond on top of the right ring -->
+                  <path d="M 30 7 L 26.5 4 L 30 1 L 33.5 4 Z" class="ring-diamond" fill="currentColor" opacity="0.9" />
+                  <line x1="30" y1="1" x2="30" y2="7" stroke="currentColor" stroke-width="0.9" opacity="0.6" />
+                  <line x1="26.5" y1="4" x2="33.5" y2="4" stroke="currentColor" stroke-width="0.9" opacity="0.6" />
+                </g>
+              </svg>
+              <p class="big-day-label">Ceremony Venue</p>
+              <p class="big-day-value">Shrine of the Sacred Heart of Jesus</p>
+              <p class="big-day-sub">📍 Roxas City</p>
+            </div>
+
+            <!-- 3. Reception Venue Card -->
+            <div id="reception-card" class="big-day-card group cursor-pointer">
+              <!-- Wine glass icon -->
+              <svg class="big-day-icon icon-glass" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 Q4 8 4 12 Q4 19 12 19 Q20 19 20 12 Q20 8 18 2 Z"></path>
+                <line x1="12" y1="19" x2="12" y2="26"></line>
+                <line x1="7.5" y1="26" x2="16.5" y2="26"></line>
+                <!-- wine fill line -->
+                <path d="M5.5 13 Q5.8 16 8 17.5 Q10 18.8 12 19" stroke-width="0.8" opacity="0.5" stroke-dasharray="1.5 1"></path>
+                <!-- bubble in wine -->
+                <circle cx="10" cy="13" r="0.55" fill="currentColor" class="glass-bubble-1"></circle>
+                <circle cx="13.5" cy="11" r="0.45" fill="currentColor" class="glass-bubble-2"></circle>
+              </svg>
+              <p class="big-day-label">Reception Venue</p>
+              <p class="big-day-value">Espacio Verde</p>
+              <p class="big-day-sub">📍 Roxas City</p>
+            </div>
+
+            <!-- 4. Dress Theme Card -->
+            <div id="dress-card" class="big-day-card group cursor-pointer">
+              <!-- Dress / gown icon -->
+              <svg class="big-day-icon icon-dress" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 2 Q9 6 12 6 Q15 6 15 2"></path>
+                <path d="M9 6 L4 26 L20 26 L15 6 Z"></path>
+                <line x1="9" y1="6" x2="15" y2="6"></line>
+                <path d="M8.5 13 Q12 15 15.5 13" stroke-width="0.9" opacity="0.7"></path>
+              </svg>
+              <p class="big-day-label">Dress Theme</p>
+              <p class="font-sans text-[7.5px] tracking-[0.16em] uppercase text-gold-soft/40 mb-1 leading-none">Shades of</p>
+              <p class="big-day-value" style="font-size: 11px;">Burgundy and Brown</p>
+              <p class="big-day-sub"> </p>
+            </div>
+
+            <!-- 5. Time Card (INTERACTIVE) -->
+            <div id="time-card" class="big-day-card group cursor-pointer">
+              <!-- Clock icon -->
+              <svg class="big-day-icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9.5"></circle>
+                <line x1="12" y1="12" x2="12" y2="7.5" class="clock-hand-hour"></line>
+                <line x1="12" y1="12" x2="15.5" y2="12" class="clock-hand-minute"></line>
+                <circle cx="12" cy="12" r="0.8" fill="currentColor"></circle>
+              </svg>
+              <p class="big-day-label">Time</p>
+              <p class="big-day-value">2:00 PM</p>
+              <p class="big-day-sub">Ceremony</p>
+            </div>
+
+            <!-- 6. Special Note Card (INTERACTIVE) -->
+            <div id="note-card" class="big-day-card group cursor-pointer">
+              <!-- Animated Envelope icon -->
+              <svg class="big-day-icon icon-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="7" rx="2" class="envelope-body"></rect>
+                <path d="M2 7L12 14L22 7" class="envelope-flap" stroke-linejoin="round" stroke-linecap="round"></path>
+              </svg>
+              <p class="big-day-label">Special Note</p>
+              <p class="big-day-value">Tap to Read</p>
+              <p class="big-day-sub"> </p>
+            </div>
+
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. THE FINAL CLIMAX QUESTION -->
+      <section id="climax-section" class="relative w-full h-screen min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden select-none">
+        
+        <!-- High-resolution Background Wedding image exactly like the reference -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none select-none z-[1]" style="background-image: url('assets/wedding_hero_bg.webp'); filter: brightness(0.35); "></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-velvet-absolute via-transparent to-velvet-absolute pointer-events-none z-[2]"></div>
+
+        <div class="relative z-[10] flex flex-col items-center justify-center max-w-4xl pt-8" id="climax-content">
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-wide text-ivory-light leading-relaxed mb-6 max-w-3xl px-4">
+            Thank you for being such an important part of our lives.
+          </h2>
+
+          <h1 class="font-cursive text-4xl sm:text-5xl md:text-7xl text-gold-accent font-light tracking-wide mb-8 leading-tight glow-text-gold px-4">
+            We can't imagine this day without you
+          </h1>
+          
+
+
+
+
+
+        </div>
+      </section>
+
+
+
+    </div>
+
+    <!-- 8. RECEPTION VENUE DETAILS MODAL (Frosted Burgundy Glass) -->
+    <div id="reception-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      
+      <!-- Modal Content Card -->
+      <div id="reception-modal-card" class="relative w-full max-w-6xl bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl p-5 sm:p-8 md:p-10 shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col gap-6" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button (Gold & Skewed) -->
+        <button id="close-reception-modal" class="absolute top-6 right-6 z-[50] w-10 h-10 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch pt-2">
+          
+          <!-- Left: Details Column (4 cols on lg, 5 on md) -->
+          <div class="lg:col-span-4 md:col-span-5 flex flex-col justify-between gap-5">
+            <div>
+              <span class="font-serif text-[10px] tracking-[0.3em] text-gold-soft font-semibold uppercase mb-1.5 block">
+                RECEPTION VENUE
+              </span>
+              <h3 class="font-serif text-2xl sm:text-3xl text-gold-accent font-light tracking-wide mb-1">
+                Espacio Verde Resort
+              </h3>
+              <p class="font-serif text-xs italic text-gold-light/60 mb-5">
+                "Where every stay is unique"
+              </p>
+              
+              <div class="space-y-4 font-serif text-xs sm:text-sm leading-relaxed text-ivory-soft/90">
+                <p class="text-justify">
+                  A peaceful getaway for nature lovers, Espacio Verde Resort is a premier luxury eco-friendly hotel resort. It offers quality accommodations and delectable dining options nestled in a green paradise amidst Roxas City. It is with great joy that <strong class="text-gold-accent font-semibold glow-text-gold">Marvie and Art</strong> have chosen this remarkable destination to celebrate the reception of their wedding, where family and friends will gather to share in the beginning of their forever.
+                </p>
+                <p class="text-justify">
+                  The wedding reception for <strong class="text-gold-accent font-semibold glow-text-gold">Marvie and Art's Wedding</strong> will be held at the majestic <strong class="text-gold-accent font-semibold glow-text-gold">El Comedor Hall</strong>, an elegant banquet venue overlooking the resort's private lagoons, offering a stunning backdrop of water lilies and lush tropical landscaping—creating the perfect setting for an unforgettable evening of love, laughter, and celebration.
+                </p>
+              </div>
+            </div>
+
+            <!-- Contact & Info -->
+            <div class="border-t border-gold-accent/10 pt-4 space-y-2 font-sans text-xs text-ivory-text/70">
+              <div class="flex items-center gap-3">
+                <i data-lucide="map-pin" class="w-4 h-4 text-gold-accent shrink-0"></i>
+                <span>Brgy. Dayao, Roxas City, Capiz, 5800</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i data-lucide="phone" class="w-4 h-4 text-gold-accent shrink-0"></i>
+                <a href="tel:+63366203734" class="hover:text-gold-accent transition-colors">+63 (36) 620 3734</a>
+                <span class="text-gold-accent/30">|</span>
+                <a href="tel:+639173739596" class="hover:text-gold-accent transition-colors">+63 917 373 9596</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <i data-lucide="mail" class="w-4 h-4 text-gold-accent shrink-0"></i>
+                <a href="mailto:info@espacioverde-resort.com" class="hover:text-gold-accent transition-colors">info@espacioverde-resort.com</a>
+              </div>
+              <div class="flex items-center gap-3 pt-2">
+                <i data-lucide="globe" class="w-4 h-4 text-gold-accent shrink-0"></i>
+                <a href="https://www.espacioverde-resort.com/" target="_blank" rel="noopener noreferrer" class="text-gold-accent font-semibold hover:text-gold-light hover:underline transition-all">
+                  Visit Official Website &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Photos & Map Subgrid (8 cols on lg, 7 on md) -->
+          <div class="lg:col-span-8 md:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-5 items-stretch">
+            
+            <!-- Photo Box: Scenic View (Wider: 7 cols) -->
+            <div class="sm:col-span-7 relative rounded-2xl overflow-hidden border border-gold-accent/20 bg-velvet-black shadow-lg flex flex-col min-h-[260px] md:min-h-full">
+              <img src="assets/reception_venue.webp" alt="Espacio Verde Resort Scenic View" class="w-full h-full object-cover" />
+              <!-- Luxurious black and gold overlay label -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col items-center justify-end p-5 select-none text-center">
+                <p class="font-serif text-sm text-gold-accent font-semibold mb-0.5 tracking-wide">Espacio Verde Resort</p>
+                <p class="font-sans text-[10px] text-ivory-soft/60 tracking-wider uppercase mb-1">
+                  Scenic View
+                </p>
+              </div>
+              <!-- Inner thin border frame (gold lining border) -->
+              <div class="absolute inset-2 border border-gold-accent/10 rounded-xl pointer-events-none z-[2]"></div>
+            </div>
+
+            <!-- Google Maps Column: Map Location (Narrower: 5 cols) -->
+            <a href="https://maps.app.goo.gl/GtWf2sqzUFiFAB59A" target="_blank" rel="noopener noreferrer" class="sm:col-span-5 relative rounded-2xl overflow-hidden border border-gold-accent/20 bg-velvet-black shadow-lg flex flex-col min-h-[260px] md:min-h-full group focus:outline-none transition-all duration-300 hover:border-gold-accent/60">
+              <img src="assets/reception_map.webp" alt="Espacio Verde Resort Google Map Location" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]" />
+              <!-- Luxurious black and gold overlay prompt -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col items-center justify-end p-5 select-none text-center">
+                <div class="w-12 h-12 rounded-full border border-gold-accent/30 bg-velvet-black/70 flex items-center justify-center text-gold-accent shadow-[0_4px_12px_rgba(0,0,0,0.5)] mb-3 group-hover:scale-110 group-hover:border-gold-accent/60 group-hover:text-gold-light transition-all duration-300">
+                  <i data-lucide="navigation" class="w-5 h-5 fill-current"></i>
+                </div>
+                <p class="font-serif text-sm text-gold-accent font-semibold mb-0.5 tracking-wide">Espacio Verde Resort</p>
+                <p class="font-sans text-[10px] text-ivory-soft/60 tracking-wider uppercase mb-1 flex items-center gap-1.5 justify-center">
+                  <i data-lucide="map" class="w-3 h-3"></i> Click to Open in Google Maps
+                </p>
+              </div>
+              <!-- Inner thin border frame -->
+              <div class="absolute inset-2 border border-gold-accent/10 rounded-xl pointer-events-none z-[2]"></div>
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Venue Photos Grid -->
+        <div class="border-t border-gold-accent/10 pt-5 mt-2 relative z-10">
+          <div class="flex items-baseline justify-between mb-3">
+            <span class="font-serif text-[10px] tracking-[0.2em] text-gold-soft font-semibold uppercase">
+              VENUE PHOTOS
+            </span>
+            <span class="font-sans text-[9px] sm:text-[10px] tracking-wider text-ivory-soft/50 uppercase">
+              Click photos to view
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="relative overflow-hidden rounded-2xl border border-gold-accent/15 group aspect-[4/3] bg-velvet-black">
+              <img src="assets/reception_photo1.webp" alt="Espacio Verde Pool and Slide View" class="w-full h-full object-cover cursor-pointer lightbox-trigger group-hover:scale-105 transition-transform duration-[2000ms]" />
+              <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+            </div>
+            <div class="relative overflow-hidden rounded-2xl border border-gold-accent/15 group aspect-[4/3] bg-velvet-black">
+              <img src="assets/reception_photo2.webp" alt="Espacio Verde Panoramic View" class="w-full h-full object-cover cursor-pointer lightbox-trigger group-hover:scale-105 transition-transform duration-[2000ms]" />
+              <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+            </div>
+            <div class="relative overflow-hidden rounded-2xl border border-gold-accent/15 group aspect-[4/3] bg-velvet-black">
+              <img src="assets/reception_photo3.webp" alt="Espacio Verde Scenic Lagoon View" class="w-full h-full object-cover cursor-pointer lightbox-trigger group-hover:scale-105 transition-transform duration-[2000ms]" />
+              <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 8.5 WEDDING DATE DETAILS MODAL (Frosted Burgundy Glass) -->
+    <div id="date-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      
+      <!-- Modal Content Card -->
+      <div id="date-modal-card" class="relative w-full max-w-2xl bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col gap-6" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button (Gold & Skewed) -->
+        <button id="close-date-modal" class="absolute top-4 right-4 z-[20] w-9 h-9 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <div class="relative z-10 flex flex-col gap-6">
+          
+          <!-- Title Section -->
+          <div class="text-center">
+            <span class="font-serif text-[10px] tracking-[0.3em] text-gold-soft font-semibold uppercase mb-1.5 block">
+              SAVE THE DATE
+            </span>
+            <h3 class="font-serif text-3xl text-gold-accent font-light tracking-wide mb-1">
+              May 22, 2027
+            </h3>
+            <p class="font-serif text-xs italic text-gold-light/60">
+              "A lifetime of love begins today"
+            </p>
+          </div>
+
+          <!-- Countdown Timer & Calendar grid -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            
+            <!-- Left: Countdown (6 cols on md) -->
+            <div class="md:col-span-6 flex flex-col justify-center items-center rounded-2xl border border-gold-accent/15 bg-velvet-black/40 p-6 text-center relative overflow-hidden">
+              <div class="absolute inset-2 border border-gold-accent/5 rounded-xl pointer-events-none"></div>
+              
+              <h4 class="font-serif text-[11px] tracking-[0.25em] text-gold-soft uppercase mb-5">THE COUNTDOWN</h4>
+              
+              <div class="grid grid-cols-4 gap-4 w-full max-w-sm">
+                <div class="flex flex-col items-center">
+                  <span id="countdown-days" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Days</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-gold-accent/10">
+                  <span id="countdown-hours" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Hours</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-gold-accent/10">
+                  <span id="countdown-mins" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Mins</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-gold-accent/10">
+                  <span id="countdown-secs" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Secs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Mini Calendar (6 cols on md) -->
+            <div class="md:col-span-6 flex flex-col justify-center items-center rounded-2xl border border-gold-accent/15 bg-velvet-black/40 p-6 text-center relative overflow-hidden">
+              <div class="absolute inset-2 border border-gold-accent/5 rounded-xl pointer-events-none"></div>
+              
+              <h4 class="font-serif text-[11px] tracking-[0.25em] text-gold-soft uppercase mb-4">MAY 2027</h4>
+              
+              <div class="w-full max-w-[200px] mx-auto">
+                <!-- Day names -->
+                <div class="grid grid-cols-7 gap-1.5 text-[9px] font-sans text-gold-soft/50 uppercase font-semibold mb-2">
+                  <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+                <!-- Calendar Grid (May 2027 starts on Saturday, May 22 is highlighted) -->
+                <div class="grid grid-cols-7 gap-1.5 text-[12px] font-serif text-ivory-text/75">
+                  <!-- First row empty slots -->
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span>1</span>
+                  <span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                  <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                  <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+                  <!-- highlighted 22 -->
+                  <span class="relative flex items-center justify-center text-gold-accent font-semibold z-10">
+                    22
+                    <span class="absolute inset-0 w-6 h-6 -m-0.5 border border-gold-accent rounded-full bg-gold-accent/15 z-[-1] animate-pulse"></span>
+                  </span>
+                  <span>23</span>
+                  <span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+                  <span>31</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 9. CEREMONY VENUE DETAILS MODAL (Frosted Burgundy Glass) -->
+    <div id="ceremony-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      
+      <!-- Modal Content Card -->
+      <div id="ceremony-modal-card" class="relative w-full max-w-2xl bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button (Gold & Skewed) -->
+        <button id="close-ceremony-modal" class="absolute top-4 right-4 z-[20] w-9 h-9 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Top: Church Video Column (Spans side to side border to border, no padding) -->
+        <div class="w-full relative overflow-hidden border-b border-gold-accent/20 bg-velvet-black/30 z-[2] shrink-0">
+          <video src="assets/church.mp4" autoplay loop muted playsinline class="w-full h-56 sm:h-72 block object-cover" style="object-position: center 80%;">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Inner frame border overlapping the image slightly at the top/sides -->
+          <div class="absolute inset-x-3 top-3 border-t border-x border-gold-accent/10 rounded-t-xl pointer-events-none h-full"></div>
+        </div>
+
+        <!-- Bottom: Details Column (Spaced out padding) -->
+        <div class="relative z-10 p-6 sm:p-8 flex flex-col gap-5 text-left">
+          
+          <div>
+            <span class="font-serif text-[10px] tracking-[0.3em] text-gold-soft font-semibold uppercase mb-1.5 block">
+              CEREMONY VENUE
+            </span>
+            <h3 class="font-serif text-2xl sm:text-3xl text-gold-accent font-light tracking-wide mb-1 leading-tight">
+              Sanctuary of the Sacred Heart of Jesus
+            </h3>
+            <p class="font-serif text-xs italic text-gold-light/60 mb-4">
+              "Tumandok Hill, Pueblo de Panay"
+            </p>
+            
+            <div class="space-y-4 font-serif text-xs sm:text-sm leading-relaxed text-ivory-soft/90">
+              <p class="text-justify">
+                Perched on the scenic Tumandok Hill in Pueblo de Panay Township, the <strong class="text-gold-accent font-semibold glow-text-gold">Sacred Heart of Jesus Shrine</strong> offers a tranquil and breathtaking sanctuary dedicated to prayer, reflection, and the celebration of holy sacraments.
+              </p>
+              <p class="text-justify">
+                Renowned for its awe-inspiring <strong class="text-white font-bold">132-foot (40-meter) monument of Jesus Christ—</strong><strong class="text-gold-accent font-semibold glow-text-gold">the tallest shrine of Jesus in the Philippines</strong>—this sacred landmark stands as a majestic symbol of faith overlooking Roxas City, Capiz. Its serene atmosphere, panoramic views, and profound spiritual presence create a truly extraordinary setting for a wedding ceremony.
+              </p>
+              <p class="text-justify">
+                In this holy and magnificent sanctuary, <strong class="text-gold-accent font-semibold glow-text-gold">Marvie & Art’s wedding</strong> will be celebrated in a place where love, faith, and God’s blessings beautifully come together, making their special day even more meaningful and unforgettable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Contact & Info -->
+          <div class="border-t border-gold-accent/10 pt-4 space-y-2.5 font-sans text-xs text-ivory-text/70">
+            <div class="flex items-center gap-3">
+              <i data-lucide="map-pin" class="w-4 h-4 text-gold-accent shrink-0"></i>
+              <span>Tumandok Hill, Pueblo de Panay Township, Roxas City, Capiz</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="phone" class="w-4 h-4 text-gold-accent shrink-0"></i>
+              <a href="tel:+639999910662" class="hover:text-gold-accent transition-colors">0999 991 0662</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="mail" class="w-4 h-4 text-gold-accent shrink-0"></i>
+              <a href="mailto:holytrinityministry@gmail.com" class="hover:text-gold-accent transition-colors">holytrinityministry@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-3 pt-1">
+              <i data-lucide="globe" class="w-4 h-4 text-gold-accent shrink-0"></i>
+              <a href="https://www.sacredheartshrine.ph/" target="_blank" rel="noopener noreferrer" class="text-gold-accent font-semibold hover:text-gold-light hover:underline transition-all">
+                Visit Official Website &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Venue Photos Grid -->
+          <div class="border-t border-gold-accent/10 pt-5 mt-2">
+            <div class="flex items-baseline justify-between mb-3">
+              <span class="font-serif text-[10px] tracking-[0.2em] text-gold-soft font-semibold uppercase">
+                VENUE PHOTOS
+              </span>
+              <span class="font-sans text-[9px] sm:text-[10px] tracking-wider text-ivory-soft/50 uppercase">
+                Click photos to view
+              </span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="relative overflow-hidden rounded-2xl border border-gold-accent/15 group aspect-[4/3] bg-velvet-black">
+                <img src="assets/church_photo1.webp" alt="Sanctuary of the Sacred Heart of Jesus Overlook View" class="w-full h-full object-cover cursor-pointer lightbox-trigger group-hover:scale-105 transition-transform duration-[2000ms]" />
+                <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+              </div>
+              <div class="relative overflow-hidden rounded-2xl border border-gold-accent/15 group aspect-[4/3] bg-velvet-black">
+                <img src="assets/church_photo2.webp" alt="Sanctuary of the Sacred Heart of Jesus Front Entrance" class="w-full h-full object-cover object-top cursor-pointer lightbox-trigger group-hover:scale-105 transition-transform duration-[2000ms]" style="object-position: center top;" />
+                <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+              </div>
+              <div class="relative overflow-hidden rounded-2xl border border-gold-accent/15 group aspect-[4/3] bg-velvet-black">
+                <img src="assets/church_photo3.webp" alt="Sanctuary of the Sacred Heart of Jesus Altar Interior" class="w-full h-full object-cover cursor-pointer lightbox-trigger group-hover:scale-105 transition-transform duration-[2000ms]" />
+                <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 10. DRESS CODE DETAILS MODAL (Frosted Burgundy Glass) -->
+    <div id="dress-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      
+      <!-- Modal Content Card -->
+      <div id="dress-modal-card" class="relative w-full max-w-2xl bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button (Gold & Skewed) -->
+        <button id="close-dress-modal" class="absolute top-4 right-4 z-[20] w-9 h-9 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center pt-2">
+          
+          <!-- Left: Details Column (6 cols) -->
+          <div class="md:col-span-6 flex flex-col justify-between gap-5 text-left p-6 sm:p-8">
+            <div>
+              <span class="font-serif text-[10px] tracking-[0.3em] text-gold-soft font-semibold uppercase mb-1.5 block">
+                COLOR MOTIF
+              </span>
+              <h3 class="font-serif text-2xl sm:text-3xl text-gold-accent font-light tracking-wide mb-1 leading-tight">
+                Dress Code
+              </h3>
+              <p class="font-serif text-xs italic text-gold-light/60 mb-5">
+                "We encourage you to dress according to our color motif"
+              </p>
+              
+              <!-- Color Swatches with overlapping gold borders -->
+              <div class="flex gap-6 mb-6">
+                <!-- Burgundy Swatch -->
+                <div class="flex flex-col items-center">
+                  <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-gold-accent/25 shadow-md flex items-center justify-center bg-velvet-black p-1.5">
+                    <div class="w-full h-full rounded-xl" style="background-color: #800f2f;"></div>
+                    <!-- Overlapping thin decorative border -->
+                    <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+                  </div>
+                  <span class="font-serif text-[10px] tracking-wider text-gold-soft/80 mt-2 font-semibold uppercase text-center max-w-[150px] leading-tight">Burgundy</span>
+                </div>
+                <!-- Brown Swatch -->
+                <div class="flex flex-col items-center">
+                  <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-gold-accent/25 shadow-md flex items-center justify-center bg-velvet-black p-1.5">
+                    <div class="w-full h-full rounded-xl" style="background-color: #6e473b;"></div>
+                    <!-- Overlapping thin decorative border -->
+                    <div class="absolute -inset-1 border border-gold-accent/10 rounded-2xl pointer-events-none"></div>
+                  </div>
+                  <span class="font-serif text-[10px] tracking-wider text-gold-soft/80 mt-2 font-semibold uppercase text-center max-w-[150px] leading-tight">Brown</span>
+                </div>
+              </div>
+
+              <!-- Attire Guidelines -->
+              <div class="space-y-4 font-serif text-xs sm:text-sm leading-relaxed text-ivory-soft/90">
+                <div>
+                  <strong class="text-gold-accent block uppercase tracking-wider text-[10px] mb-1">Ladies:</strong>
+                  <p class="pl-3 border-l border-gold-accent/25">Long gown (According to the color motif)</p>
+                </div>
+                <div>
+                  <strong class="text-gold-accent block uppercase tracking-wider text-[10px] mb-1">Gentlemen:</strong>
+                  <ul class="pl-3 border-l border-gold-accent/25 list-none space-y-0.5">
+                    <li>Black Suit and Slacks (With Tie)</li>
+                    <li>Long Sleeves (White inner for Ninong)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Strictly Formal notice -->
+            <div class="border-t border-gold-accent/10 pt-4 space-y-1">
+              <p class="font-serif text-gold-accent/70 font-semibold tracking-wider uppercase text-[10px] mb-0">Strictly Formal</p>
+              <p class="font-serif text-gold-accent text-sm sm:text-[15px] font-semibold tracking-wide italic mt-0.5">"White is reserved for the bride."</p>
+            </div>
+          </div>
+
+          <!-- Right: Visual Illustration (6 cols) -->
+          <div class="md:col-span-6 flex items-center justify-center p-4 z-[2]">
+            <div class="relative w-full h-full rounded-3xl overflow-hidden border border-gold-accent/20 moving-glass-brown-bg p-2 shadow-lg flex items-center justify-center min-h-[320px] md:min-h-[360px]">
+              <video src="assets/dress_code.mp4" autoplay loop muted playsinline class="w-full h-full object-cover rounded-2xl z-[2] drop-shadow-[0_10px_25px_rgba(0,0,0,0.7)]"></video>
+              <!-- Overlapping thin gold frame border inside the image box -->
+              <div class="absolute inset-2 border border-gold-accent/15 rounded-2xl pointer-events-none z-[3]"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 10.5 TIME DETAILS MODAL (Frosted Burgundy Glass) -->
+    <div id="time-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      
+      <!-- Modal Content Card -->
+      <div id="time-modal-card" class="relative w-full max-w-sm bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl p-6 sm:p-8 shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col gap-5" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button (Gold & Skewed) -->
+        <button id="close-time-modal" class="absolute top-4 right-4 z-[50] w-9 h-9 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <div class="relative z-10 flex flex-col items-center text-center gap-5 pt-2">
+          <span class="font-serif text-[10px] tracking-[0.3em] text-gold-soft font-semibold uppercase block">
+            SCHEDULE DETAILS
+          </span>
+          
+          <!-- Big Animated Clock Icon -->
+          <div class="relative w-20 h-20 rounded-full border border-gold-accent/25 bg-velvet-black/60 shadow-md flex items-center justify-center p-2">
+            <svg class="w-12 h-12 text-gold-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9.5"></circle>
+              <line x1="12" y1="12" x2="12" y2="7.5" class="clock-hand-hour"></line>
+              <line x1="12" y1="12" x2="15.5" y2="12" class="clock-hand-minute"></line>
+              <circle cx="12" cy="12" r="0.8" fill="currentColor"></circle>
+            </svg>
+            <div class="absolute -inset-1 border border-gold-accent/10 rounded-full pointer-events-none"></div>
+          </div>
+
+          <div class="w-full space-y-4">
+            
+            <!-- Ceremony Card -->
+            <div class="rounded-xl border border-gold-accent/10 bg-velvet-black/40 p-4 relative overflow-hidden">
+              <span class="font-sans text-[8px] uppercase tracking-[0.16em] text-gold-soft/50 mb-0.5 block">Ceremony Time</span>
+              <span class="font-serif text-xl font-medium text-gold-accent uppercase">02:00 PM</span>
+            </div>
+
+            <!-- Call Time Card -->
+            <div class="rounded-xl border border-gold-accent/20 bg-gradient-to-b from-[#23040a] to-[#0c0002] p-5 relative overflow-hidden shadow-lg">
+              <!-- Inner border decoration -->
+              <div class="absolute inset-1.5 border border-gold-accent/5 rounded-lg pointer-events-none"></div>
+              
+              <span class="font-sans text-[8.5px] uppercase tracking-[0.18em] text-gold-accent font-semibold mb-1 block">Call Time</span>
+              <p class="font-serif text-xs text-ivory-soft/85 leading-relaxed mb-3">Please arrive no later than</p>
+              
+              <div class="flex items-center justify-center gap-3 text-gold-accent">
+                <!-- Small animated clock -->
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(212,175,55,0.5));">
+                  <circle cx="12" cy="12" r="9.5"></circle>
+                  <line x1="12" y1="12" x2="12" y2="7.5" class="clock-hand-hour"></line>
+                  <line x1="12" y1="12" x2="15.5" y2="12" class="clock-hand-minute"></line>
+                  <circle cx="12" cy="12" r="0.8" fill="currentColor"></circle>
+                </svg>
+                <strong class="font-serif text-2xl font-semibold tracking-widest">1:00 PM</strong>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10.6 SPECIAL NOTE DETAILS MODAL -->
+    <div id="note-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      
+      <!-- Modal Content Card -->
+      <div id="note-modal-card" class="relative w-full max-w-2xl bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col gap-6" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button (Gold & Skewed) -->
+        <button id="close-note-modal" class="absolute top-4 right-4 z-[50] w-9 h-9 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <div class="relative z-10 flex flex-col items-center text-center gap-5 pt-2">
+          <span class="font-serif text-[10px] tracking-[0.3em] text-gold-soft font-semibold uppercase block">
+            Special Note
+          </span>
+          
+          <!-- Big Animated Envelope Icon -->
+          <div class="relative w-20 h-20 rounded-full border border-gold-accent/25 bg-velvet-black/60 shadow-md flex items-center justify-center p-2">
+            <svg class="w-12 h-12 text-gold-accent icon-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="7" rx="2" class="envelope-body"></rect>
+              <path d="M2 7L12 14L22 7" class="envelope-flap" stroke-linejoin="round" stroke-linecap="round"></path>
+            </svg>
+            <div class="absolute -inset-1 border border-gold-accent/10 rounded-full pointer-events-none"></div>
+          </div>
+
+          <div class="w-full space-y-4">
+            <div class="rounded-xl border border-gold-accent/10 bg-velvet-black/40 p-6 relative overflow-hidden text-center">
+              <p class="font-serif text-sm sm:text-base leading-relaxed text-ivory-soft/90 tracking-wide">
+                This invitation is our heartfelt request for you to be part of our wedding entourage. Our <strong class="text-gold-accent font-semibold glow-text-gold">official wedding invitation</strong>—with the complete event details, entourage list, and <strong class="text-gold-accent font-semibold glow-text-gold">RSVP instructions</strong>—will be sent separately closer to our wedding day.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10.8 THANK YOU MESSAGE MODAL -->
+    <div id="thankyou-modal" class="fixed inset-0 w-full h-full z-[99999] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 select-none">
+      <!-- Modal Content Card -->
+      <div id="thankyou-modal-card" class="relative w-full max-w-2xl bg-[#1d0207]/95 border border-gold-accent/25 rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_25px_65px_rgba(0,0,0,0.95)] backdrop-blur-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-500 flex flex-col gap-6" style="background: linear-gradient(135deg, rgba(35, 4, 10, 0.95) 0%, rgba(15, 1, 3, 0.98) 100%);">
+        
+        <!-- Elegant thin internal border -->
+        <div class="absolute inset-3 border border-gold-accent/10 rounded-2xl pointer-events-none z-[1]"></div>
+        
+        <!-- Glowing Floating Particles Canvas -->
+        <canvas class="modal-particles absolute inset-0 w-full h-full pointer-events-none z-[0] rounded-3xl"></canvas>
+        
+        <!-- Close Button -->
+        <button id="close-thankyou-modal" class="absolute top-4 right-4 z-[50] w-9 h-9 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close details">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <div class="relative z-10 flex flex-col items-center text-center gap-6 pt-2">
+          <!-- Monogram crest -->
+          <div class="relative w-20 h-20 rounded-full border border-gold-accent/25 bg-velvet-black/60 shadow-md flex items-center justify-center p-2 mb-2">
+            <img src="assets/MAmonogram.webp" alt="Seal crest" class="w-14 h-14 object-contain" />
+            <div class="absolute -inset-1 border border-gold-accent/10 rounded-full pointer-events-none"></div>
+          </div>
+
+          <div class="w-full space-y-5">
+            <h3 class="font-cursive text-5xl sm:text-6xl md:text-7xl text-gold-accent font-light tracking-wide leading-none select-none">
+              Thank You, Dr. Pedroso
+            </h3>
+            
+            <div class="rounded-xl border border-gold-accent/10 bg-velvet-black/40 p-6 relative overflow-hidden text-center">
+              <p class="font-serif text-base sm:text-lg leading-relaxed text-ivory-light/95 tracking-wide italic">
+                "Every great journey is made even more beautiful by the people who walk beside us. Thank you for being part of ours."
+              </p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="flex flex-col items-center rounded-2xl border border-gold-accent/15 bg-velvet-black/40 p-6 text-center relative overflow-hidden mt-4">
+              <div class="absolute inset-2 border border-gold-accent/5 rounded-xl pointer-events-none"></div>
+              <h4 class="font-serif text-[11px] tracking-[0.25em] text-gold-soft uppercase mb-5">THE COUNTDOWN TO THE BIG DAY</h4>
+              
+              <div class="grid grid-cols-4 gap-4 w-full max-w-sm">
+                <div class="flex flex-col items-center">
+                  <span id="thankyou-countdown-days" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Days</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-gold-accent/10">
+                  <span id="thankyou-countdown-hours" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Hours</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-gold-accent/10">
+                  <span id="thankyou-countdown-mins" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Mins</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-gold-accent/10">
+                  <span id="thankyou-countdown-secs" class="font-serif text-3xl sm:text-4xl text-gold-accent font-light">00</span>
+                  <span class="font-sans text-[10px] text-ivory-soft/50 uppercase tracking-widest mt-1.5">Secs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. IMAGE LIGHTBOX MODAL (Fullscreen Overlay) -->
+    <div id="lightbox-modal" class="fixed inset-0 w-full h-full z-[999999] hidden items-center justify-center p-4 bg-black/95 backdrop-blur-md opacity-0 select-none">
+      <!-- Dark backdrop element for dismissal clicks -->
+      <div id="lightbox-modal-overlay" class="absolute inset-0 w-full h-full"></div>
+      
+      <!-- Close Button (Gold & Skewed) -->
+      <button id="close-lightbox-modal" class="absolute top-6 right-6 z-[1000000] w-10 h-10 flex items-center justify-center rounded-full border border-gold-accent/25 bg-velvet-black/80 hover:border-gold-accent/60 text-gold-accent hover:text-gold-light hover:rotate-90 transition-all duration-300 cursor-pointer focus:outline-none" aria-label="Close image">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Maximized Image Box -->
+      <div class="relative z-10 max-w-[90%] max-h-[85vh] flex items-center justify-center transform scale-95 transition-all duration-500">
+        <img id="lightbox-modal-img" src="" alt="Maximized Venue View" class="max-w-full max-h-[85vh] object-contain rounded-2xl border border-gold-accent/25 shadow-2xl" />
+        <!-- Elegant internal gold frame border -->
+        <div class="absolute inset-2 border border-gold-accent/15 rounded-2xl pointer-events-none z-[1]"></div>
+      </div>
+    </div>
+
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Cinematic logic script -->
+    <script src="script.js"></script>
+  </body>
+</html>
